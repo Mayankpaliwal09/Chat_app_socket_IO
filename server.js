@@ -50,11 +50,11 @@ io.on('connection', socket => {
      //  Run when client Disconnect
      socket.on('disconnect', ()=>{
          const user = userLeave(socket.id);
-
+       
          if(user){
             io.to(user.room).emit(
                 'message',
-                 formatMessage(botName,` ${user.username} has Left the chat`)
+                 formatMessage(botName,` ${user.username} has Left the chat`), 
                  );
 //   send user and room info in side bar when disconnect
       io.to(user.room).emit('roomUsers', {
